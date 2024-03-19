@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<header class="text-center py-5 degradado">
+  <div class="container">
+    <img src="{% static 'img/banner-index.jpeg' %}" alt="Banner de la Clínica" class="img-fluid mb-4">
+    <h1 class="display-4">Clínica San Rafael</h1>
+    <p class="lead">Tu salud es nuestra prioridad</p>
+  </div>
+</header>
+
+<article class="article m-2">
+  <div class="container">
+    <div class="row">
+      <div class="col border p-3 m-2 rounded shadow degradadoClaro">
+        <section id="about">
+          <div class="linea-vertical border-primary">
+            <h2 class=" ml-3 mb-0 p-2 ">Acerca de la Clínica</h2>
+          </div>    
+          <hr class="my-2">
+          <div class="card border-0">
+            <div class="card-header border-bottom-0 pb-1">
+              La Clínica San Rafael, con más de 50 años de trayectoria, se ha convertido en un faro de esperanza para la comunidad. Nuestro compromiso inquebrantable es brindar servicios médicos de calidad, abarcando una amplia gama de especialidades. Sin embargo, lo que nos distingue es nuestro enfoque humano en el cuidado del paciente. Cada persona que cruza nuestras puertas es más que un diagnóstico; es un ser único con sueños, miedos y esperanzas. En la Clínica San Rafael, la salud no es solo una ciencia, sino un arte que practicamos con pasión y dedicación.
+              
+            </div>
+            <div class="collapse" id="contenido">
+              <div class="card-body border-top-0 bg-light pt-1">
+                  Un Legado de Cincuenta Años
+                Cincuenta años atrás, un grupo de visionarios se unió para dar vida a la Clínica San Rafael. Su misión: cambiar vidas. Desde entonces, hemos sido testigos de innumerables historias de valentía, curación y resiliencia. Nuestros pasillos han visto lágrimas de alegría y suspiros de alivio. Cada día, renovamos nuestro compromiso con la salud y el bienestar de nuestra comunidad.
+
+                  El Latido Humano de la Medicina
+                La Clínica San Rafael no es solo un edificio de concreto y acero. Es un organismo vivo, alimentado por el latido humano de médicos, enfermeras, voluntarios y pacientes. Aquí, las sonrisas son recetas y las palabras de aliento son medicinas. No solo tratamos enfermedades; cuidamos almas.
+
+                  Nuestros Héroes Anónimos
+                Detrás de cada puerta, hay un héroe anónimo. La enfermera que sostiene la mano de un niño asustado antes de una cirugía. El médico que estudia incansablemente para ofrecer el mejor tratamiento. El voluntario que comparte su tiempo y su amor. En la Clínica San Rafael, todos somos héroes en esta gran epopeya de la salud.
+
+                  Especialidades que Transforman Vidas
+                Desde la Cardiología, donde los corazones encuentran su ritmo, hasta la Oncología, donde la esperanza florece incluso en los momentos más oscuros, nuestras especialidades son faros de luz. La Ginecología celebra la vida, mientras que la Cirugía Plástica restaura la confianza. Cada departamento es un capítulo en nuestra historia de servicio.
+
+                  Un Espacio de Esperanza
+                Nuestras ventanas no solo miran hacia la ciudad; miran hacia el futuro. Los jardines terapéuticos son oasis de paz, donde las flores escuchan secretos y los árboles guardan sueños. La cafetería no solo sirve café; sirve conversaciones y risas. En cada rincón, la esperanza se sienta a la mesa.
+              </div>
+            </div>
+            <div class="card-footer border-top-0">
+              <button class="btn  btn-primary " data-toggle="collapse" data-target="#contenido" aria-expanded="false">
+                Leer más
+              </button>
+            </div>
+            
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col border p-3 m-2 rounded shadow degradadoClaro">
+        <section id="services">
+          <div class="linea-vertical border-primary">
+            <h2 class="ml-3 mb-0 p-2">Servicios</h2>
+          </div>
+          <ul>
+            <li>Medicina General</li>
+            <li>Pediatría</li>
+            <li>Cardiología</li>
+            <li>Neurología</li>
+            <li>Ortopedia</li>
+            <!-- Más servicios -->
+          </ul>
+          <button class="btn btn-primary">Leer más</button>
+        </section>
+      </div>
+      <div class="col border p-3 m-2 rounded shadow degradadoClaro">
+        <!-- Sección del Blog de Salud -->
+        <section id="health-blog">
+          <div class="linea-vertical border-primary">
+            <h2 class="ml-3 mb-0 p-2">Blog de Salud</h2>
+          </div>
+          <p>Consejos útiles y últimas noticias para mantener una vida sana.</p>
+          <!-- Entradas del blog aquí -->
+          <button class="btn btn-primary">Leer más</button>
+        </section>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col border p-3 m-2 rounded shadow degradadoClaro">
+        <!-- Sección de Noticias y Actualizaciones -->
+        <section id="news">
+          <div class="linea-vertical border-primary">
+            <h2 class="ml-3 mb-0 p-2">Noticias</h2>
+          </div>
+          <p>Últimas actualizaciones sobre nuestro hospital.</p>
+          <!-- Noticias aquí -->
+          <button class="btn btn-primary">Leer más</button>
+        </section>
+      </div>
+      <div class="col border p-3 m-2 rounded shadow degradadoClaro">
+        <section id="contact">
+          <div class="container">
+            <div class="linea-vertical border-primary">
+              <h2 class="ml-3 mb-0 p-2">Contacto</h2>
+            </div>
+            <p>
+                Dirección: Calle Principal #123, Guatao, La Habana, Cuba<br>
+                Teléfono: +53 51341261<br>
+                Email: ernegonzalvar@gmail.com
+            </p>
+            <h3>Enviar un Mensaje</h3>
+            <form action="/submit-form" method="POST">
+              <div class="mb-3">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Su nombre" required>
+              </div>
+              <div class="mb-3">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Su correo electrónico" required>
+              </div>
+                <div class="mb-3">
+                  <textarea id="message" name="message" class="form-control" placeholder="Escriba su mensaje aquí..." rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+            </form>
+         </div>
+       </section>
+      </div>    
+    </div>
+  </div>
+</article>
+
+<footer class="bg-dark text-white text-center p-3">
+    <div class="row">
+        <div class="col-md-4 p-1">
+          <a href="https://www.facebook.com" class="btn btn-primary rounded-circle m-2" target="_blank" aria-label="Facebook">
+            <i class="bi bi-facebook fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.twitter.com" class="btn btn-primary rounded-circle m-2" target="_blank" aria-label="Twitter">
+            <i class="bi bi-twitter fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com" class="btn btn-danger rounded-circle m-2" target="_blank" aria-label="Instagram">
+              <i class="bi bi-instagram fab fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com" class="btn btn-info rounded-circle m-2" target="_blank" aria-label="LinkedIn">
+              <i class="bi bi-linkedin fab fa-linkedin-in"></i>
+          </a>
+        </div>
+        <div class="col-md-4 p-1">
+            <!-- <form>
+                <input type="email" placeholder="Suscríbete al boletín">
+                <button class="btn btn-secondary">Suscribirse</button>
+            </form> -->
+        </div>
+        <div class="col-md-4 p-1">
+            <a href="#about">Acerca</a> |
+            <a href="#services">Servicios</a> |
+            <a href="#health-blog">Blog de Salud</a> |
+            <a href="#news">Noticias</a> |
+            <a href="#contact">Contacto</a>
+        </div>
+    </div>
+    <p>&copy; 2024 Clínica San Rafael. Todos los derechos reservados.</p>
+</footer>
+{% endblock %}
+
+
+
+
