@@ -1,0 +1,277 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar" class="bg-dark">
+        <div class="p-4 pt-5 sticky-top">
+            <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(Imagenes/icono-login.png);"></a>
+            <ul class="list-unstyled components mb-5">
+                <li>
+                    <a href="#" onclick="mostrarSeccion('seccion3')">Perfil</a>
+                </li>
+                <li class="">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Citas</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="#" onclick="mostrarSeccion('seccion1')"> Solicitud de Citas </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="mostrarSeccion('seccion2')"> Seguimiento de Citas </a>
+                    </li>
+                    
+                    </ul>
+                </li>
+                <li>
+                    <!-- <a href="#" onclick="mostrarSeccion('seccion5')">Tratamientos y Pruebas</a> -->
+                    <a href="#TyPSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tratamientos y Pruebas</a>
+                    <ul class="collapse list-unstyled" id="TyPSubmenu">
+                        <li>
+                            <a href="#" onclick="mostrarSeccion('seccion4')">Tratamientos</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="mostrarSeccion('seccion5')">Pruebas</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="footer">
+                <div class="row">
+                    <div class="col-md-3 p-1">
+                    <a href="https://www.facebook.com" class="btn btn-primary rounded-circle m-1" target="_blank" aria-label="Facebook">
+                        <i class="bi bi-facebook fab fa-facebook-f"></i>
+                    </a>                
+                    </div>
+                    <div class="col-md-3 p-1">
+                        <a href="https://www.twitter.com" class="btn btn-primary rounded-circle m-1" target="_blank" aria-label="Twitter">
+                            <i class="bi bi-twitter fab fa-twitter"></i>
+                        </a>
+                    </div>
+                    <div class="col-md-3 p-1">
+                        <a href="https://www.instagram.com" class="btn btn-danger rounded-circle m-1" target="_blank" aria-label="Instagram">
+                            <i class="bi bi-instagram fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <div class="col-md-3 p-1">
+                        <a href="https://www.linkedin.com" class="btn btn-info rounded-circle m-1" target="_blank" aria-label="LinkedIn">
+                            <i class="bi bi-linkedin fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>              
+                <p>&copy; 2024 Clínica San Rafael. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </nav>
+    <div id="content" class="p-4 p-md-5">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid ">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#" onclick="mostrarSeccion('seccion3')">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="mostrarSeccion('seccion1')">Solicitud de Citas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="mostrarSeccion('seccion2')">Seguimiento de Citas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="mostrarSeccion('seccion4')">Tratamientos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="mostrarSeccion('seccion5')">Pruebas</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <article>
+                <section id="seccion1" class="seccion-oculta">
+                    <!-- Solicitud de Citas -->
+                    <h2>Solicitud de Citas</h2>
+                    <form class="cita-form">
+                        <div class="form-group">
+                            <label for="email">Correo electrónico:</label>
+                            <input type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico">
+                        </div>
+                        <div class="form-group">
+                            <label for="cita">Fecha de la cita:</label>
+                            <input type="text" class="form-control" id="cita" placeholder="YYYY-MM-DD" pattern="\d{4}-\d{2}-\d{2}" required>
+                            <small class="form-text text-muted">Ingresa la fecha en el formato YYYY-MM-DD.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="hora">Hora de la cita:</label>
+                            <input type="time" class="form-control" id="hora">
+                        </div>
+                        <div class="form-group">
+                            <label for="motivo">Motivo de la cita:</label>
+                            <textarea class="form-control" id="motivo" rows="3" placeholder="Ingrese el motivo de la cita"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="especialidad">Especialidad:</label>
+                            <select class="form-control" id="especialidad">
+                                <option value="dermatología">Dermatología</option>
+                                <option value="cardiología">Cardiología</option>
+                                <option value="ginecología">Ginecología</option>
+                                <option value="oftalmología">Oftalmología</option>
+                                <option value="psiquiatría">Psiquiatría</option>
+                                <option value="pediatría">Pediatría</option>
+                                <!-- Agrega más opciones según las especialidades disponibles -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="medico">Nombre del médico:</label>
+                            <input type="text" class="form-control" id="medico" placeholder="Ingrese el nombre del médico">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+                    </form>
+                </section>
+                <section id="seccion2" class="seccion-oculta">
+                    <!-- Seguimiento de Citas -->
+                    <h2>Historial de Citas</h2>
+                    <div id="contenedor-citas" class="row">
+                        <!-- Aquí se agregarán las tarjetas -->
+                    </div>
+                </section>
+                <section id="seccion3" class="seccion-visible">
+                    <!-- Info del Paciente -->
+                    <div class="container mt-5">
+                        <h1>Información Personal</h1>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="nombre">Nombre:</label>
+                                    <input type="text" class="form-control" id="nombre" value="Juan" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="apellidos">Apellidos:</label>
+                                    <input type="text" class="form-control" id="apellidos" value="Pérez" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                                    <input type="text" class="form-control" id="fechaNacimiento" value="1990-05-15" pattern="\d{4}-\d{2}-\d{2}" required readonly>
+                                    <small class="form-text text-muted">Formato YYYY-MM-DD.</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="genero">Género:</label>
+                                    <select class="form-control" id="genero" disabled>
+                                        <option value="masculino">Masculino</option>
+                                        <option value="femenino" selected>Femenino</option>
+                                        <option value="otro">Otro</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="correoElectronico">Correo Electrónico:</label>
+                                    <input type="email" class="form-control" id="correoElectronico" value="juan.perez@example.com" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="habilitarEdicion()">Modificar</button>
+                        <button type="submit" class="btn btn-success" onclick="guardarCambios()">Aplicar Cambios</button>
+                    </div>
+                </section>
+                <section id="seccion4" class="seccion-oculta">
+                    <!-- Tratamientos -->
+                    <div class="container mt-5">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Tratamiento 1</h5>
+                                        <p class="card-text">
+                                            <strong>Descripción:</strong> Incluye terapia física y medicamentos para aliviar el dolor.
+                                        </p>
+                                        <p class="card-text">
+                                            <strong>Fecha de Inicio:</strong> 10 de marzo de 2024.
+                                        </p>
+                                        <p class="card-text">
+                                            <strong>Duración:</strong> 4 semanas.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Tratamiento 2</h5>
+                                        <p class="card-text">
+                                            <strong>Descripción:</strong> Terapia cognitivo-conductual para tratar la ansiedad.
+                                        </p>
+                                        <p class="card-text">
+                                            <strong>Fecha de Inicio:</strong> 15 de marzo de 2024.
+                                        </p>
+                                        <p class="card-text">
+                                            <strong>Duración:</strong> 8 sesiones.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="seccion5" class="seccion-oculta">
+                    <!-- Pruebas -->
+                    <div class="container mt-5">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Prueba de Glucosa</h5>
+                                        <p class="card-text">
+                                            <strong>Tipo de Prueba:</strong> Análisis de sangre para medir los niveles de glucosa.
+                                        </p>
+                                        <p class="card-text">
+                                            <strong>Fecha:</strong> 20 de marzo de 2024.
+                                        </p>
+                                        <p class="card-text">
+                                            <strong>Resultado:</strong> Nivel de glucosa en ayunas: 90 mg/dL.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Prueba de Presión Arterial</h5>
+                                        <p class="card-text">
+                                            <strong>Tipo de Prueba:</strong> Medición de la presión arterial.
+                                        </p>
+                                        <p class="card-text">
+                                            <strong>Fecha:</strong> 22 de marzo de 2024.
+                                        </p>
+                                        <p class="card-text">
+                                            <strong>Resultado:</strong> Presión arterial sistólica: 120 mm Hg, presión arterial diastólica: 80 mm Hg.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </div>
+</div>
+{% endblock %}

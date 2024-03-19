@@ -1,0 +1,114 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Citas Médicas</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Bootstrap/bootstrap-5.3.2-dist/css/bootstrap.min.css' %}">
+    <link rel="icon" href="{% static 'img/icono-index (2).png' %}">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/bootstrap-icons-1.11.3/font/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user.css' %}">
+    <style>
+      aside a{
+          display: block;
+          position: relative;
+      }
+
+      aside a.nav-link::after {
+          content: '>';
+          position: absolute;
+          right: 0px
+      }
+  </style>
+</head>
+<body>
+    <nav class=" navbar navbar-expand-lg navbar-dark bg-dark mb-0">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'img/icono-index.png' %}" alt="Logo de Mi Empresa" width="30" height="30">
+                Clínica San Rafael
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}+">Acerca</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#health-blog">Blog de Salud</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#news">Noticias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+            {% if user.is_authenticated %}
+              <!-- <button class="btn btn-primary wiggle" id="btnLogin"><a href="{% url 'logout' %}">Cerrar Sesion</a></button> -->
+              <!-- <a class="btn btn-primary wiggle" href="{% url 'logout' %}">Cerrar Sesion</a> -->
+              <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <button class="btn btn-primary wiggle" type="submit">Logout</button>
+              </form>
+            {% else %}
+              <button onclick="location.href = '/login';" class="btn btn-primary wiggle" id="btnLogin">Iniciar Sesión</button>
+            {% endif %}
+            
+        </div>
+    </nav>
+
+    <!-- Formulario de Incio de Sesion -->
+    
+
+      <!-- Formulario de Registro -->
+<div class="modal fade" id="overlay2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <!-- Contenido del formulario de registro -->
+        <div class="modal-header">
+          <h5 class="modal-title">Registro</h5>
+          <button type="button" class="close border-0 bg-white" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">✖︎</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group pb-2">
+              <label for="nombre">Nombre</label>
+              <input type="text" class="form-control" id="nombre2" placeholder="Ingresa tu nombre">
+            </div>
+            <div class="form-group pb-2">
+              <label for="email">Correo electrónico</label>
+              <input type="email" class="form-control" id="email2" placeholder="Ingresa tu correo">
+            </div>
+            <div class="form-group pb-2">
+              <label for="contrasena">Contraseña</label>
+              <input type="password" class="form-control" id="contrasena2" placeholder="Ingresa una contraseña">
+            </div>
+            <button type="submit" class="btn btn-primary">Registrarse</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    {% block content %}
+    {% endblock %}
+
+    <script src="{% static 'Bootstrap/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'Bootstrap/package/dist/umd/popper.min.js' %}"></script>
+    <script src="{% static 'Bootstrap/bootstrap-4.5.3-dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
