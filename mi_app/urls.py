@@ -16,7 +16,9 @@ urlpatterns = [
     # path('docs/', include_docs_urls(title="Tablas API")),
     path('', views.index_view, name='index'),
     path('login/', views.iniciar_sesion, name='login'),
-    path('paciente/', views.paciente_view, name='paciente'),
-    path('medico/', views.medico_view, name='medico'),
-    path('logout', auth.LogoutView.as_view(template_name='index.html'), name='logout')
+    path('paciente/<int:pk>', views.paciente_view, name='paciente'),
+    path('medico/<int:pk>', views.medico_view, name='medico'),
+    path('logout', auth.LogoutView.as_view(template_name='index.html'), name='logout'),
+
+    path('update_paciente/<int:pk>', views.update_paciente, name='update_paciente')
 ]

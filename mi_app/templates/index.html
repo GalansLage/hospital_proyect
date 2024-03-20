@@ -2,6 +2,10 @@
 {% load static %}
 
 {% block content %}
+{% if error %}
+<div class="alert">'NO ERES UN PACIENTE'</div>
+{% endif %}
+
 <header class="text-center py-5 degradado">
   <div class="container">
     <img src="{% static 'img/banner-index.jpeg' %}" alt="Banner de la Clínica" class="img-fluid mb-4">

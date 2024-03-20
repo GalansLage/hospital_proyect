@@ -147,49 +147,54 @@
                     <!-- Info del Paciente -->
                     <div class="container mt-5">
                         <h1>Información Personal</h1>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="nombre">Nombre:</label>
-                                    <input type="text" class="form-control" id="nombre" value="Juan" readonly>
+                        <form action="{% url "update_paciente" paciente.pk %}" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="nombre">Nombre:</label>
+                                        <input type="text" class="form-control" id="nombre" name="nombre" value="{{paciente.nombre}}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="apellidos">Apellidos:</label>
+                                        <input type="text" class="form-control" id="apellidos" name="apellido" value="{{paciente.apellido}}" readonly>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="apellidos">Apellidos:</label>
-                                    <input type="text" class="form-control" id="apellidos" value="Pérez" readonly>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                                        <input type="text" class="form-control" id="fechaNacimiento" name="fecha_Nacimiento" value="{{paciente.fecha_Nacimiento}}" required readonly>
+                                        <small class="form-text text-muted">Formato YYYY-MM-DD.</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="genero">Género:</label>
+                                        <select class="form-control" id="genero" disabled>
+                                            <option value="masculino" name="2" selected >{% if paciente.get_genero_display == 'M' %}Masculino{% elif paciente.get_genero_display == 'F' %}Femenino{% else %}Otros{% endif %}</option>
+                                            {% comment %} <option value="femenino" name="1" {% if paciente.get_genero_display == 'F' %}selected{% endif %} >Femenino</option>
+                                            <option value="otro" name="0" {% if paciente.get_genero_display == 'Otros' %}selected{% endif %} >Otro</option> {% endcomment %}
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-                                    <input type="text" class="form-control" id="fechaNacimiento" value="1990-05-15" pattern="\d{4}-\d{2}-\d{2}" required readonly>
-                                    <small class="form-text text-muted">Formato YYYY-MM-DD.</small>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="correoElectronico">Correo Electrónico:</label>
+                                        <input type="email" class="form-control" id="correoElectronico" name="email" value="juan.perez@example.com" readonly>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="genero">Género:</label>
-                                    <select class="form-control" id="genero" disabled>
-                                        <option value="masculino">Masculino</option>
-                                        <option value="femenino" selected>Femenino</option>
-                                        <option value="otro">Otro</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="correoElectronico">Correo Electrónico:</label>
-                                    <input type="email" class="form-control" id="correoElectronico" value="juan.perez@example.com" readonly>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-primary" onclick="habilitarEdicion()">Modificar</button>
-                        <button type="submit" class="btn btn-success" onclick="guardarCambios()">Aplicar Cambios</button>
+                            <button type="button" class="btn btn-primary" onclick="habilitarEdicion()">Modificar</button>
+                            {% comment %} <button type="submit" class="btn btn-success" onclick="guardarCambios()">Aplicar Cambios</button> {% endcomment %}
+                            <button type="submit" class="btn btn-success">Aplicar Cambios</button>
+                            
+                        </form>
                     </div>
                 </section>
                 <section id="seccion4" class="seccion-oculta">
