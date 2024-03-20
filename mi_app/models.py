@@ -32,7 +32,7 @@ class Paciente(models.Model):
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     idPaciente = models.AutoField(primary_key=True)
-    nombre = models.CharField( max_length=255)
+    nombre = models.CharField( max_length=255, null=True)
     apellido = models.CharField(null=True, blank=True, max_length=255)
     fecha_Nacimiento = models.DateField(null=True, blank=True)
     genero = models.IntegerField(choices=TYPE_GENERS, default=0)

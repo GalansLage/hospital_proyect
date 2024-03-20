@@ -27,7 +27,7 @@ DEBUG = True
 
 # ALLOWED_HOSTS = []
 
-LOGIN_REDIRECT_URL = '/'
+# LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 
@@ -40,16 +40,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
-    'rest_framework',
-    'coreapi',
+    # 'corsheaders',
+    # 'rest_framework',
+    # 'coreapi',
     'mi_app'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    # 'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -81,16 +81,27 @@ WSGI_APPLICATION = 'django_project_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         # 'ENGINE': 'django.db.backends.sqlite3',
+#         # 'NAME': BASE_DIR/'db.sqlite3',
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'citas',
+#         'USER': 'root',
+#         'PASSWORD': '1234',
+#         'HOST': 'localhost',  
+#         'PORT': '3306', 
+#     }
+# }
+
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR/'db.sqlite3',
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'citas',
-        'USER': 'root',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',  
-        'PORT': '3306', 
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'hospitales',
+        'USER': 'postgres',
+        'PASSWORD': '137900',
+        'HOST': 'localhost',  # O la dirección de tu servidor PostgreSQL
+        'PORT': '5432',  # Puerto de PostgreSQL
     }
 }
 
